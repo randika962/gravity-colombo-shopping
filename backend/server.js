@@ -12,7 +12,7 @@ const db = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
-  database: "gravitymarket",
+  database: "gravitycolombomarket",
 });
 
 db.connect((err) => {
@@ -23,7 +23,7 @@ db.connect((err) => {
     console.log("Connected to database as id " + db.threadId);
   });
 
-// ---------------------------------------Add a new endpoint to User SignUp section--------------------------------------------
+// ---------------------------------------Add a new endpoint to Vendor SignUp section--------------------------------------------
 
 // Function to validate email format
 
@@ -33,7 +33,7 @@ const validateEmail = (email) => {
   return emailRegex.test(email);
 };
 
-app.post("/signup", (req, res) => {
+app.post("/vendorsignup", (req, res) => {
   console.log(req.body);
 
   // Check if any of the values are empty
@@ -52,17 +52,23 @@ app.post("/signup", (req, res) => {
   }
 
   const sql =
-    "INSERT INTO registrations (clientName, email, phone, password, address, city, country, zip) VALUES ?";
+    "INSERT INTO vendor_registration (first_name, last_name, dob, email, mobile_number, id_number, id_image, address, pickup_address, return_address, profile_photo, user_name, password, confirm_password) VALUES ?";
   const values = [
     [
-      req.body.clientName,
+      req.body.first_name,
+      req.body.last_name,
+      req.body.dob,
       req.body.email,
-      req.body.phone,
-      req.body.password,
+      req.body.mobile_number,
+      req.body.id_number,
+      req.body.id_image,
       req.body.address,
-      req.body.city,
-      req.body.country,
-      req.body.zip,
+      req.body.pickup_address,
+      req.body.return_address,
+      req.body.profile_photo,
+      req.body.user_name,
+      req.body.password,
+      req.body.confirm_password,
     ],
   ];
   db.query(sql, [values], (err, data) => {

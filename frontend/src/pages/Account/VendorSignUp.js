@@ -2,58 +2,94 @@ import React, { useState } from "react";
 import { BsCheckCircleFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-const SignUp = () => {
+const VendorSignUp = () => {
   
-  const [clientName, setClientName] = useState("");
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
+  const [dob, setDOB] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [password, setPassword] = useState("");
+  const [mobile_number, setMobileNumber] = useState("");
+  const [id_number, setIDNumber] = useState("");
+  const [id_image, setIDImage] = useState("");
   const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [country, setCountry] = useState("");
-  const [zip, setZip] = useState("");
+  const [pickup_address, setPickupAddress] = useState("");
+  const [return_address, setReturnAddress] = useState("");
+  const [profile_photo, setProfilePhoto] = useState("");
+  const [user_name, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirm_password, setConfirmPassword] = useState("");
   const [checked, setChecked] = useState(false);
-  const [errClientName, setErrClientName] = useState("");
+  const [errFirstName, setErrFirstName] = useState("");
+  const [errLastName, setErrLastName] = useState("");
+  const [errDOB, setErrDOB] = useState("");
   const [errEmail, setErrEmail] = useState("");
-  const [errPhone, setErrPhone] = useState("");
-  const [errPassword, setErrPassword] = useState("");
+  const [errMobileNumber, setErrMobileNumber] = useState("");
+  const [errIdNumber, setErrIDNumber] = useState("");
+  const [errIdImage, setErrIDImage] = useState("");
   const [errAddress, setErrAddress] = useState("");
-  const [errCity, setErrCity] = useState("");
-  const [errCountry, setErrCountry] = useState("");
-  const [errZip, setErrZip] = useState("");
+  const [errPickupAddress, setErrPickupAddress] = useState("");
+  const [errReturnAddress, setErrReturnAddress] = useState("");
+  const [errProfilePhoto, setErrProfilePhoto] = useState("");
+  const [errUserName, setErrUserName] = useState("");
+  const [errPassword, setErrPassword] = useState("");
+  const [errConfirmPassword, setErrConfirmPassword] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
  
-  const handleName = (e) => {
-    setClientName(e.target.value);
-    setErrClientName("");
+  const handleFirstName = (e) => {
+    setFirstName(e.target.value);
+    setErrFirstName("");
+  };
+  const handleLastName = (e) => {
+    setLastName(e.target.value);
+    setErrLastName("");
+  };
+  const handleDOB = (e) => {
+    setDOB(e.target.value);
+    setErrDOB("");
   };
   const handleEmail = (e) => {
     setEmail(e.target.value);
     setErrEmail("");
   };
-  const handlePhone = (e) => {
-    setPhone(e.target.value);
-    setErrPhone("");
+  const handleMobileNumber = (e) => {
+    setMobileNumber(e.target.value);
+    setErrMobileNumber("");
   };
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-    setErrPassword("");
+  const handleIDNumber = (e) => {
+    setIDNumber(e.target.value);
+    setErrIDNumber("");
+  };
+  const handleIDImage = (e) => {
+    setIDImage(e.target.value);
+    setErrIDImage("");
   };
   const handleAddress = (e) => {
     setAddress(e.target.value);
     setErrAddress("");
   };
-  const handleCity = (e) => {
-    setCity(e.target.value);
-    setErrCity("");
+  const handlePickupAddress = (e) => {
+    setPickupAddress(e.target.value);
+    setErrPickupAddress("");
   };
-  const handleCountry = (e) => {
-    setCountry(e.target.value);
-    setErrCountry("");
+  const handleReturnAddress = (e) => {
+    setReturnAddress(e.target.value);
+    setErrReturnAddress("");
   };
-  const handleZip = (e) => {
-    setZip(e.target.value);
-    setErrZip("");
+  const handleProfilePhoto = (e) => {
+    setProfilePhoto(e.target.value);
+    setErrProfilePhoto("");
+  };
+  const handleUsername = (e) => {
+    setUserName(e.target.value);
+    setErrUserName("");
+  };
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
+    setErrPassword("");
+  };
+  const handleConfirmPassword = (e) => {
+    setConfirmPassword(e.target.value);
+    setErrConfirmPassword("");
   };
 
   const EmailValidation = (email) => {
@@ -66,8 +102,14 @@ const SignUp = () => {
   const handleSignUp = (e) => {
     e.preventDefault();
     if (checked) {
-      if (!clientName) {
-        setErrClientName("Enter your name");
+      if (!first_name) {
+        setErrFirstName("Enter your first name");
+      }
+      if (!last_name) {
+        setErrLastName("Enter your last name");
+      }
+      if (!dob) {
+        setErrDOB("Enter your birthday");
       }
       if (!email) {
         setErrEmail("Enter your email");
@@ -76,8 +118,29 @@ const SignUp = () => {
           setErrEmail("Enter a Valid email");
         }
       }
-      if (!phone) {
-        setErrPhone("Enter your phone number");
+      if (!mobile_number) {
+        setErrMobileNumber("Enter your mobile number");
+      }
+      if (!id_number) {
+        setErrIDNumber("Enter your ID number");
+      }
+      if (!id_image) {
+        setErrIDImage("Select your ID Image");
+      }
+      if (!address) {
+        setErrAddress("Enter your address");
+      }
+      if (!pickup_address) {
+        setErrPickupAddress("Enter your pickup address");
+      }
+      if (!return_address) {
+        setErrReturnAddress("Enter your return address");
+      }
+      if (!profile_photo) {
+        setErrProfilePhoto("Select your profile photo");
+      }
+      if (!user_name) {
+        setErrUserName("Enter your user name");
       }
       if (!password) {
         setErrPassword("Create a password");
@@ -86,56 +149,71 @@ const SignUp = () => {
           setErrPassword("Passwords must be at least 6 characters");
         }
       }
-      if (!address) {
-        setErrAddress("Enter your address");
-      }
-      if (!city) {
-        setErrCity("Enter your city name");
-      }
-      if (!country) {
-        setErrCountry("Enter the country you are residing");
-      }
-      if (!zip) {
-        setErrZip("Enter the zip code of your area");
+      if (!confirm_password) {
+        setErrConfirmPassword("Create a confirm password");
+      } else {
+        if (confirm_password.length < 6) {
+          setErrConfirmPassword("Confirm Passwords must be at least 6 characters");
+        }
       }
 
       if (
-        clientName &&
+        first_name &&
+        last_name &&
+        dob &&
         email &&
         EmailValidation(email) &&
+        mobile_number &&
+        id_number &&
+        id_image &&
+        address &&
+        pickup_address &&
+        return_address &&
+        profile_photo &&
+        user_name &&
         password &&
         password.length >= 6 &&
-        address &&
-        city &&
-        country &&
-        zip
+        confirm_password &&
+        confirm_password.length >= 6
       ) {
         setSuccessMsg(
-          `Hello dear ${clientName}, Welcome you to Gravity Admin panel. We received your Sign up request. We are processing to validate your access. Till then stay connected and additional assistance will be sent to you by your mail at ${email}`
+          `Hello dear ${first_name} ${last_name}, Welcome you to Gravity Admin panel. We received your Sign up request. We are processing to validate your access. Till then stay connected and additional assistance will be sent to you by your mail at ${email}`
         );
-        setClientName("");
+        setFirstName("");
+        setLastName("");
+        setDOB("");
         setEmail("");
-        setPhone("");
-        setPassword("");
+        setMobileNumber("");
+        setIDNumber("");
+        setIDImage("");
         setAddress("");
-        setCity("");
-        setCountry("");
-        setZip("");
+        setPickupAddress("");
+        setReturnAddress("");
+        setProfilePhoto("");
+        setUserName("");
+        setPassword("");
+        setConfirmPassword("");
 
-        fetch("http://localhost:3001/signup", {
+        fetch("http://localhost:3001/vendorsignup", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            clientName,
+            first_name,
+            last_name,
+            dob,
             email,
-            phone,
-            password,
+            mobile_number,
+            id_number,
+            id_image,
             address,
-            city,
-            country,
-            zip,
+            pickup_address,
+            return_address,
+            profile_photo,
+            user_name,
+            password,
+            confirm_password,
           }),
         })
         .then((res) => res.json())
@@ -156,7 +234,7 @@ const SignUp = () => {
           </Link>
           <div className="flex flex-col gap-1 -mt-1">
             <h1 className="font-titleFont text-xl font-medium">
-              Get started for free
+              Vendor Registration
             </h1>
             <p className="text-base">Create your account to access more</p>
           </div>
@@ -237,26 +315,64 @@ const SignUp = () => {
                 Create your account
               </h1>
               <div className="flex flex-col gap-3">
-       
+
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Full Name
+                    First Name
                   </p>
                   <input
-                    onChange={handleName}
-                    value={clientName}
+                    onChange={handleFirstName}
+                    value={first_name}
                     className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                     type="text"
-                    placeholder="eg. John Doe"
+                    placeholder="First Name"
                   />
-                  {errClientName && (
+                  {errFirstName && (
                     <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
                       <span className="font-bold italic mr-1">!</span>
-                      {errClientName}
+                      {errFirstName}
                     </p>
                   )}
                 </div>
-     
+
+                <div className="flex flex-col gap-.5">
+                  <p className="font-titleFont text-base font-semibold text-gray-600">
+                    Last Name
+                  </p>
+                  <input
+                    onChange={handleLastName}
+                    value={last_name}
+                    className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
+                    type="text"
+                    placeholder="Last Name"
+                  />
+                  {errLastName && (
+                    <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
+                      <span className="font-bold italic mr-1">!</span>
+                      {errLastName}
+                    </p>
+                  )}
+                </div>
+
+                <div className="flex flex-col gap-.5">
+                  <p className="font-titleFont text-base font-semibold text-gray-600">
+                    Date Of Birth
+                  </p>
+                  <input
+                    onChange={handleDOB}
+                    value={dob}
+                    className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
+                    type="date"
+                    placeholder="Birth Day"
+                  />
+                  {errDOB && (
+                    <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
+                      <span className="font-bold italic mr-1">!</span>
+                      {errDOB}
+                    </p>
+                  )}
+                </div>
+
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
                     Work Email
@@ -266,7 +382,7 @@ const SignUp = () => {
                     value={email}
                     className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                     type="email"
-                    placeholder="john@workemail.com"
+                    placeholder="example@email.com"
                   />
                   {errEmail && (
                     <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
@@ -275,41 +391,60 @@ const SignUp = () => {
                     </p>
                   )}
                 </div>
-      
+
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Phone Number
+                    Mobile Number
                   </p>
                   <input
-                    onChange={handlePhone}
-                    value={phone}
+                    onChange={handleMobileNumber}
+                    value={mobile_number}
                     className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                     type="text"
-                    placeholder="008801234567891"
+                    placeholder="+94778907654"
                   />
-                  {errPhone && (
+                  {errMobileNumber && (
                     <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
                       <span className="font-bold italic mr-1">!</span>
-                      {errPhone}
+                      {errMobileNumber}
                     </p>
                   )}
                 </div>
-       
+
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Password
+                    ID Number
                   </p>
                   <input
-                    onChange={handlePassword}
-                    value={password}
+                    onChange={handleIDNumber}
+                    value={id_number}
                     className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
-                    type="password"
-                    placeholder="Create password"
+                    type="text"
+                    placeholder="ID Number"
                   />
-                  {errPassword && (
+                  {errIdNumber && (
                     <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
                       <span className="font-bold italic mr-1">!</span>
-                      {errPassword}
+                      {errIdNumber}
+                    </p>
+                  )}
+                </div>
+
+                <div className="flex flex-col gap-.5">
+                  <p className="font-titleFont text-base font-semibold text-gray-600">
+                    ID Image
+                  </p>
+                  <input
+                    onChange={handleIDImage}
+                    value={id_image}
+                    className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
+                    type="file"
+                    placeholder="ID Image"
+                  />
+                  {errIdImage && (
+                    <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
+                      <span className="font-bold italic mr-1">!</span>
+                      {errIdImage}
                     </p>
                   )}
                 </div>
@@ -335,57 +470,114 @@ const SignUp = () => {
 
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
-                    City
+                    Pickup Address
                   </p>
                   <input
-                    onChange={handleCity}
-                    value={city}
+                    onChange={handlePickupAddress}
+                    value={pickup_address}
                     className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                     type="text"
-                    placeholder="Your city"
+                    placeholder="road-001, house-115, example area"
                   />
-                  {errCity && (
+                  {errPickupAddress && (
                     <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
                       <span className="font-bold italic mr-1">!</span>
-                      {errCity}
+                      {errPickupAddress}
                     </p>
                   )}
                 </div>
 
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Country
+                    Return Address
                   </p>
                   <input
-                    onChange={handleCountry}
-                    value={country}
+                    onChange={handleReturnAddress}
+                    value={return_address}
                     className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                     type="text"
-                    placeholder="Your country"
+                    placeholder="road-001, house-115, example area"
                   />
-                  {errCountry && (
+                  {errReturnAddress && (
                     <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
                       <span className="font-bold italic mr-1">!</span>
-                      {errCountry}
+                      {errReturnAddress}
                     </p>
                   )}
                 </div>
-   
+
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Zip/Postal code
+                    Profile Photo
                   </p>
                   <input
-                    onChange={handleZip}
-                    value={zip}
+                    onChange={handleProfilePhoto}
+                    value={profile_photo}
                     className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
-                    type="text"
-                    placeholder="Your country"
+                    type="file"
+                    placeholder="Profile Photo"
                   />
-                  {errZip && (
+                  {errProfilePhoto && (
                     <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
                       <span className="font-bold italic mr-1">!</span>
-                      {errZip}
+                      {errProfilePhoto}
+                    </p>
+                  )}
+                </div>
+
+                <div className="flex flex-col gap-.5">
+                  <p className="font-titleFont text-base font-semibold text-gray-600">
+                    User Name
+                  </p>
+                  <input
+                    onChange={handleUsername}
+                    value={user_name}
+                    className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
+                    type="text"
+                    placeholder="User Name"
+                  />
+                  {errUserName && (
+                    <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
+                      <span className="font-bold italic mr-1">!</span>
+                      {errUserName}
+                    </p>
+                  )}
+                </div>
+
+                <div className="flex flex-col gap-.5">
+                  <p className="font-titleFont text-base font-semibold text-gray-600">
+                    Password
+                  </p>
+                  <input
+                    onChange={handlePassword}
+                    value={password}
+                    className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
+                    type="password"
+                    placeholder="Create password"
+                  />
+                  {errPassword && (
+                    <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
+                      <span className="font-bold italic mr-1">!</span>
+                      {errPassword}
+                    </p>
+                  )}
+                </div>
+
+                <div className="flex flex-col gap-.5">
+                  <p className="font-titleFont text-base font-semibold text-gray-600">
+                    Confirm Password
+                  </p>
+                  <input
+                    onChange={handleConfirmPassword}
+                    value={confirm_password}
+                    className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
+                    type="password"
+                    placeholder="Create confirm password"
+                  />
+                  {errConfirmPassword && (
+                    <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
+                      <span className="font-bold italic mr-1">!</span>
+                      {errConfirmPassword}
                     </p>
                   )}
                 </div>
@@ -429,4 +621,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default VendorSignUp;

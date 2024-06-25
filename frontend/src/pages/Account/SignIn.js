@@ -134,7 +134,7 @@ const SignIn = () => {
             <p className="w-full px-4 py-10 text-green-500 font-medium font-titleFont">
               {successMsg}
             </p>
-            <Link to="/signup">
+            <Link to="/vendorsignup">
               <button
                 className="w-full h-10 bg-primeColor text-gray-200 rounded-md text-base font-titleFont font-semibold 
             tracking-wide hover:bg-black hover:text-white duration-300"
@@ -201,7 +201,7 @@ const SignIn = () => {
                 )}
                 <p className="text-sm text-center font-titleFont font-medium">
                   Don't have an Account?{" "}
-                  <Link to="/signup">
+                  <Link to="/vendorsignup">
                     <span className="hover:text-blue-600 duration-300">
                       Sign up
                     </span>
