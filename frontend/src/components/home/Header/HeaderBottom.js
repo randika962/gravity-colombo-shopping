@@ -157,7 +157,12 @@ const HeaderBottom = () => {
                 </a>
                 <a href="/vendorsignup" onClick={() => setShowUser(false)}>
                   <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400 hover:border-b-white hover:text-white duration-300 cursor-pointer">
-                    Sign Up
+                    Vendor Sign Up
+                  </li>
+                </a>
+                <a href="/membersignup" onClick={() => setShowUser(false)}>
+                  <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400 hover:border-b-white hover:text-white duration-300 cursor-pointer">
+                    Member Sign Up
                   </li>
                 </a>
                 <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400 hover:border-b-white hover:text-white duration-300 cursor-pointer">
