@@ -12,7 +12,8 @@ import Header from "./components/home/Header/Header";
 import HeaderBottom from "./components/home/Header/HeaderBottom";
 import SpecialCase from "./components/SpecialCase/SpecialCase";
 import About from "./pages/About/About";
-import SignIn from "./pages/Account/SignIn";
+import MemberSignIn from "./pages/Account/MemberSignIn";
+import VendorSignIn from "./pages/Account/VendorSignIn";
 import VendorSignUp from "./pages/Account/VendorSignUp";
 import MemberSignUp from "./pages/Account/MemberSignUp";
 import Cart from "./pages/Cart/Cart";
@@ -67,7 +68,8 @@ const router = createBrowserRouter(
       </Route>
       <Route path="/vendorsignup" element={<VendorSignUp />}></Route>
       <Route path="/membersignup" element={<MemberSignUp />}></Route>
-      <Route path="/signin" element={<SignIn />}></Route>
+      <Route path="/vendorsignin" element={<VendorSignIn />}></Route>
+      <Route path="/membersignin" element={<MemberSignIn />}></Route>
     </Route>
   )
 );

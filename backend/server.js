@@ -127,11 +127,28 @@ app.post("/membersignup", (req, res) => {
   });
 });
 
-// ---------------------------------------Add a new endpoint to User Login section--------------------------------------------
+// ---------------------------------------Add a new endpoint to Vendor Login section--------------------------------------------
 
-app.post("/login", (req, res) => {
+app.post("/vendorlogin", (req, res) => {
   const sql =
-    "SELECT * FROM registrations WHERE email = ? AND password = ?";
+    "SELECT * FROM vendor_registration WHERE user_name = ? AND password = ?";
+  db.query(sql, [req.body.user_name, req.body.password], (err, data) => {
+    if (err) {
+      return res.json("Error");
+    }
+    if (data.length > 0) {
+      return res.json("Login Success");
+    } else {
+      return res.json("Login Fail");
+    }
+  });
+});
+
+// ---------------------------------------Add a new endpoint to Member Login section--------------------------------------------
+
+app.post("/memberlogin", (req, res) => {
+  const sql =
+    "SELECT * FROM member_registration WHERE email = ? AND password = ?";
   db.query(sql, [req.body.email, req.body.password], (err, data) => {
     if (err) {
       return res.json("Error");

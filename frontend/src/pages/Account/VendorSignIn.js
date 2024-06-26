@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import { BsCheckCircleFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 
-const SignIn = () => {
-  const [email, setEmail] = useState("");
+const VendorSignIn = () => {
+  const [user_name, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [errEmail, setErrEmail] = useState("");
+  const [errUserName, setErrUserName] = useState("");
   const [errPassword, setErrPassword] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-    setErrEmail("");
+  const handleUserName = (e) => {
+    setUserName(e.target.value);
+    setErrUserName("");
   };
   const handlePassword = (e) => {
     setPassword(e.target.value);
@@ -23,35 +22,35 @@ const SignIn = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
 
-    if (!email) {
-      setErrEmail("Enter your email");
+    if (!user_name) {
+      setErrUserName("Enter your user name");
     }
 
     if (!password) {
       setErrPassword("Create a password");
     }
 
-    if (email && password) {
+    if (user_name && password) {
       try {
-        const response = await fetch("http://localhost:3001/login", {
+        const response = await fetch("http://localhost:3001/vendorlogin", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ email, password }),
+          body: JSON.stringify({ user_name, password }),
         });
 
         const data = await response.json();
 
         if (data === "Login Success") {
-          setSuccessMsg(`Hello dear, Thank you for your attempt. We are processing to validate your access. Till then stay connected and additional assistance will be sent to you by your mail at ${email}`);
+          setSuccessMsg(`Hello dear, Thank you for your attempt. We are processing to validate your access. Till then stay connected and additional assistance will be sent to you by your user name at ${user_name}`);
           setErrorMsg("");
         } else {
           setErrorMsg("Login failed. Please check your credentials and try again.");
           setSuccessMsg("");
         }
 
-        setEmail("");
+        setUserName("");
         setPassword("");
       } catch (error) {
         setErrorMsg("An error occurred. Please try again later.");
@@ -60,13 +59,7 @@ const SignIn = () => {
     }
   };
 
-  const handleGoogleLogin = (credentialResponse) => {
-    console.log(credentialResponse);
-
-  };
-
   return (
-    <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID">
       <div className="w-full h-screen flex items-center justify-center">
         <div className="w-1/2 hidden lgl:inline-flex h-full text-white">
           <div className="w-[450px] h-full bg-primeColor px-10 flex flex-col gap-6 justify-center">
@@ -154,24 +147,24 @@ const SignIn = () => {
             <form className="w-full lgl:w-[450px] h-screen flex items-center justify-center">
               <div className="px-6 py-4 w-full h-[90%] flex flex-col justify-center overflow-y-scroll scrollbar-thin scrollbar-thumb-primeColor">
                 <h1 className="font-titleFont underline underline-offset-4 decoration-[1px] font-semibold text-3xl mdl:text-4xl mb-4">
-                  Sign in
+                  Vendor Sign in
                 </h1>
                 <div className="flex flex-col gap-3">
                   <div className="flex flex-col gap-.5">
                     <p className="font-titleFont text-base font-semibold text-gray-600">
-                      Work Email
+                      User Name
                     </p>
                     <input
-                      onChange={handleEmail}
-                      value={email}
+                      onChange={handleUserName}
+                      value={user_name}
                       className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                       type="email"
-                      placeholder="john@workemail.com"
+                      placeholder="Enter User Name"
                     />
-                    {errEmail && (
+                    {errUserName && (
                       <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
                         <span className="font-bold italic mr-1">!</span>
-                        {errEmail}
+                        {errUserName}
                       </p>
                     )}
                   </div>
@@ -206,15 +199,6 @@ const SignIn = () => {
                       {errorMsg}
                     </p>
                   )}
-                  <GoogleLogin
-                    onSuccess={handleGoogleLogin}
-                    onError={() => {
-                      console.log('Login Failed');
-                    }}
-                    text="signin with google"
-                    shape="pill"
-                    theme="outline"
-                  />
                   <p className="text-sm text-center font-titleFont font-medium">
                     Don't have an Account?{" "}
                     <Link to="/vendorsignup">
@@ -229,8 +213,7 @@ const SignIn = () => {
           )}
         </div>
       </div>
-    </GoogleOAuthProvider>
   );
 };
 
-export default SignIn;
+export default VendorSignIn;

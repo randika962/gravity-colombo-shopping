@@ -299,7 +299,7 @@ const VendorSignUp = () => {
             <p className="w-full px-4 py-10 text-green-500 font-medium font-titleFont">
               {successMsg}
             </p>
-            <Link to="/signin">
+            <Link to="/vendorsignin">
               <button
                 className="w-full h-10 bg-primeColor rounded-md text-gray-200 text-base font-titleFont font-semibold 
             tracking-wide hover:bg-black hover:text-white duration-300"
@@ -606,7 +606,7 @@ const VendorSignUp = () => {
                 </button>
                 <p className="text-sm text-center font-titleFont font-medium">
                   Don't have an Account?{" "}
-                  <Link to="/signin">
+                  <Link to="/vendorsignin">
                     <span className="hover:text-blue-600 duration-300">
                       Sign in
                     </span>
